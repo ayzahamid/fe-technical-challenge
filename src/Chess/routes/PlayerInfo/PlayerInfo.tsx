@@ -5,7 +5,7 @@ import ProfileType from "../../interfaces/profile";
 import CountryType from "../../interfaces/country";
 import { Card, Avatar, Typography, Row, Col } from "antd";
 import OnlineStatus from "../../components/LastOnline";
-import './styles.less';
+import "./styles.less";
 
 const { Title, Text } = Typography;
 
@@ -14,7 +14,9 @@ const PlayerInfo: React.FC = () => {
   const [profile, setProfile] = useState<ProfileType | null>(null);
   const [country, setCountry] = useState<CountryType | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const joinedDate = profile?.joined ? new Date(profile.joined * 1000).toDateString() : null;
+  const joinedDate = profile?.joined
+    ? new Date(profile.joined * 1000).toDateString()
+    : null;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,7 +45,13 @@ const PlayerInfo: React.FC = () => {
         <Col xs={22} sm={20} md={16} lg={14} xl={12} xxl={10}>
           <Card
             style={{ position: "relative" }}
-            cover={<Avatar className="card-avatar" size={100} src={profile?.avatar} />}
+            cover={
+              <Avatar
+                className="card-avatar"
+                size={100}
+                src={profile?.avatar}
+              />
+            }
             loading={isLoading}
           >
             <div className="lastOnline">
@@ -74,13 +82,16 @@ const PlayerInfo: React.FC = () => {
                     <Text strong>Status:</Text> {profile?.status}
                   </div>
                   <div>
-                    <Text strong>Streamer:</Text> {profile?.is_streamer ? "Yes" : "No"}
+                    <Text strong>Streamer:</Text>{" "}
+                    {profile?.is_streamer ? "Yes" : "No"}
                   </div>
                   <div>
-                    <Text strong>Verified:</Text> {profile?.verified ? "Yes" : "No"}
+                    <Text strong>Verified:</Text>{" "}
+                    {profile?.verified ? "Yes" : "No"}
                   </div>
                   <div>
-                    <Text strong>League:</Text> {profile?.league ? profile.league : 'Not Available'}
+                    <Text strong>League:</Text>{" "}
+                    {profile?.league ? profile.league : "Not Available"}
                   </div>
                   <div>
                     <Text strong>Streaming Platforms:</Text>{" "}

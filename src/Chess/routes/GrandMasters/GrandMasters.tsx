@@ -3,17 +3,16 @@ import PlayersType from "../../interfaces/players";
 import { Players } from "../../api/chessApi";
 import { Table, Spin, Typography, Input } from "antd";
 import { Link } from "react-router-dom";
-import './styles.less'
+import "./styles.less";
 const { Title } = Typography;
 
 interface DataType {
-  key: React.Key
+  key: React.Key;
   index: number;
   name: string;
 }
 
 const GrandMasters: React.FC<DataType> = () => {
-
   const [players, setPlayers] = useState<DataType[]>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -43,7 +42,7 @@ const GrandMasters: React.FC<DataType> = () => {
   };
 
   const filteredPlayers = players?.filter((player) =>
-    player.name.toLowerCase().includes(searchTerm.toLowerCase())
+    player.name.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   const columns = [
@@ -51,8 +50,12 @@ const GrandMasters: React.FC<DataType> = () => {
       title: "Names",
       dataIndex: "name",
       key: "name",
-      render: (text: string) => <Link className="playerLinks" to={`player/${text}`}>{text}</Link>,
-      sorter: (a: DataType , b: DataType) => a.name.localeCompare(b.name),
+      render: (text: string) => (
+        <Link className="playerLinks" to={`player/${text}`}>
+          {text}
+        </Link>
+      ),
+      sorter: (a: DataType, b: DataType) => a.name.localeCompare(b.name),
     },
   ];
 
@@ -63,7 +66,7 @@ const GrandMasters: React.FC<DataType> = () => {
         placeholder="Search for a player"
         value={searchTerm}
         onChange={handleSearch}
-        style={{ width: 200, marginBottom: 16, float: 'right'}}
+        style={{ width: 200, marginBottom: 16, float: "right" }}
       />
       <Table
         dataSource={filteredPlayers}
@@ -72,7 +75,7 @@ const GrandMasters: React.FC<DataType> = () => {
           spinning: isLoading,
           indicator: <Spin size="large" />,
         }}
-        showSorterTooltip={{ target: 'sorter-icon' }}
+        showSorterTooltip={{ target: "sorter-icon" }}
       />
     </>
   );
