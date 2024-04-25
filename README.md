@@ -1,28 +1,31 @@
 # Amenitiz Front-end Technical Challange 🚀
+Chess Wikipedia is wiki of Chess Grandmasters as defined by Chess.com.
 
-## Introduction
+## Pre Requisite
+- Node Version 20.11.1
 
-The task is to create a wiki of Chess Grandmasters as defined by Chess.com. We are open to different layouts and styles.
+## Installations
 
-### What we are looking for:
-- This exercise should be done in React with Typescript. 
-- We do not expect production-ready code. However, we do expect the candidate to point out sub-optimal compromises taken to complete the task
-- Written tests are not expected.
+To install and set node version using nvm if not installed already
+```bash
+nvm install 20.11.1
+nvm use 20.11.1
+```
 
-📖 Documentation for chess.com's API can be found here: https://www.chess.com/news/view/published-data-api#pubapi-endpoint-games-archive
+To install all packages and their dependencies
+```bash
+npm install
+```
 
-## ♟️ Step 1: List the Grandmasters
+To start the server please run
+```bash
+npm run dev
+```
 
-Using the chess.com API, create a page that lists all the Grandmasters.
+The server will be running at
+```bash
+http://localhost:5173/
+```
 
-API endpoint: https://api.chess.com/pub/titled/GM
-
-## ♟️ Step 2: Grandmaster profile page
-
-Extend the page that you created for the previous step so that if you click on a listed grandmaster, it should take you to a profile page displaying the information from the player endpoint.
-
-API endpoint for player: [https://api.chess.com/pub/player/{username}](https://api.chess.com/pub/player/john)
-
-## ♟️ Step 3: Add Grandmaster summary
-
-On the profile page for a grandmaster that you created in step 2, add a clock that displays the amount of time since they were last online. The time since the user was active should be displayed as HH:MM:SS, and it should update every second.
+## Shortcomings
+**Limited Pagination**: Presently, the API returns all data at once, which may lead to performance issues when dealing with a large dataset. Pagination is not implemented, resulting in the retrieval of all data in bulk. To enhance performance and optimize response time, it is recommended to implement pagination. This would involve fetching only the necessary data in smaller, manageable portions as needed.

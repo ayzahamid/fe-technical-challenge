@@ -1,0 +1,29 @@
+.header {
+  height: 100px;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+
+  .logo {
+    height: 80px;
+    width: auto;
+  }
+
+  .title {
+    font-size: 30px;
+    margin-left: 5px;
+
+    @media screen and (max-width: 768px) {
+      font-size: 24px * 0.8;
+    }
+
+    @media screen and (max-width: 480px) {
+      font-size: 24px * 0.6;
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
